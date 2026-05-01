@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>أثر</title>
+
+<style>
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #e9ecef;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg,#0A66C2,#22C55E);
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    margin: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* Section */
+.section {
+    text-align: center;
+    padding: 40px;
+}
+
+/* Cards */
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #6fd1a6;
+    padding: 20px;
+    border-radius: 20px;
+    width: 220px;
+    font-weight: bold;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+/* Matching Box */
+.match-box {
+    background: #6fd1a6;
+    padding: 30px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #0A66C2;
+    color: white;
+    cursor: pointer;
+}
+
+select {
+    padding: 10px;
+    border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div>👤</div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">الفرص التطوعية العامة</a>
+        <a href="#">الفرص على ذوقك</a>
+        <a href="#">الجهات</a>
+        <a href="#">التقييمات</a>
+    </nav>
+</header>
+
+<!-- فرص مميزة -->
+<div class="section">
+    <h2>فرص مميزة</h2>
+
+    <div class="cards">
+        <div class="card">تنظيم الحج<br>وزارة الحج والعمرة</div>
+        <div class="card">ليالي المكتبات<br>بيت الثقافة</div>
+        <div class="card">رالي حائل<br>هيئة تطوير حائل</div>
+    </div>
+</div>
+
+<!-- Smart Matching -->
+<div class="section">
+    <h2>اختر فرص على ذوقك - المطابقة الذكية</h2>
+
+    <div class="match-box">
+        <select id="interest">
+            <option value="">اختر اهتماماتك</option>
+            <option value="event">فعاليات</option>
+            <option value="culture">ثقافة</option>
+            <option value="community">مجتمع</option>
+        </select>
+
+        <br><br>
+
+        <button onclick="match()">عرض الفرص</button>
+    </div>
+
+    <br><br>
+
+    <div id="results" class="cards"></div>
+</div>
+
+<script>
+function match() {
+
+    let interest = document.getElementById("interest").value;
+    let container = document.getElementById("results");
+
+    container.innerHTML = "";
+
+    if (interest === "event") {
+        container.innerHTML = `
+        <div class="card">تنظيم مؤتمر<br>وزارة التعليم</div>
+        <div class="card">إدارة فعالية<br>هيئة الترفيه</div>
+        `;
+    }
+
+    else if (interest === "culture") {
+        container.innerHTML = `
+        <div class="card">معرض كتاب<br>وزارة الثقافة</div>
+        <div class="card">أمسيات أدبية<br>مكتبة عامة</div>
+        `;
+    }
+
+    else if (interest === "community") {
+        container.innerHTML = `
+        <div class="card">حملة بيئية<br>جمعية خيرية</div>
+        <div class="card">مبادرة تطوعية<br>بلدية</div>
+        `;
+    }
+
+    else {
+        container.innerHTML = "<p>اختاري اهتمامك أولاً</p>";
+    }
+}
+</script>
+
+</body>
+</html>
